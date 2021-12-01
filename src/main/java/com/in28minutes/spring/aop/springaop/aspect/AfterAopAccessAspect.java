@@ -17,7 +17,7 @@ public class AfterAopAccessAspect {
 
     //AfterReturning is called when a method executes successfully
     @AfterReturning(
-            value = "execution(* com.in28minutes.spring.aop.springaop.business.*.*(..))",
+            value = "com.in28minutes.spring.aop.springaop.aspect.CommonJoinPointConfig.businessLayerExecution()",
             returning = "result"
     )
     public void afterReturning(JoinPoint joinPoint, Object result){
@@ -26,14 +26,14 @@ public class AfterAopAccessAspect {
 
     //AfterReturning is called when a method throws an exception
     @AfterThrowing(
-            value = "execution(* com.in28minutes.spring.aop.springaop.business.*.*(..))", throwing = "exception"
+            value = "com.in28minutes.spring.aop.springaop.aspect.CommonJoinPointConfig.businessLayerExecution()", throwing = "exception"
     )
     public void afterThrowing(JoinPoint joinPoint, Exception exception){
         logger.info("{} returned with value {}", joinPoint, exception);
     }
 
     //After is called in both scenarios (exception or success)
-    @After(value = "execution(* com.in28minutes.spring.aop.springaop.business.*.*(..))")
+    @After(value = "com.in28minutes.spring.aop.springaop.aspect.CommonJoinPointConfig.businessLayerExecution()")
     public void after(JoinPoint joinPoint){
         logger.info("after execution of {}", joinPoint);
     }
