@@ -17,7 +17,7 @@ public class UserAccessAspect {
 
     private Logger logger = LoggerFactory.getLogger(this.getClass());
 
-    @Before("execution(* com.in28minutes.spring.aop.springaop.business.*.*(..))")
+    @Before("execution(* com.in28minutes.spring.aop.springaop..*.*(..))")
     public void before(JoinPoint joinPoint){
         logger.info("check for user access");
         logger.info("Intercepted Method Calls - {}", joinPoint);
