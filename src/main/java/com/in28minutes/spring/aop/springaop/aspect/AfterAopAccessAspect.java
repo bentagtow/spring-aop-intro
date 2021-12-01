@@ -15,6 +15,7 @@ public class AfterAopAccessAspect {
 
     private Logger logger = LoggerFactory.getLogger(this.getClass());
 
+    //AfterReturning is called when a method executes successfully
     @AfterReturning(
             value = "execution(* com.in28minutes.spring.aop.springaop.business.*.*(..))",
             returning = "result"
@@ -23,6 +24,7 @@ public class AfterAopAccessAspect {
         logger.info("{} returned with value {}", joinPoint, result);
     }
 
+    //AfterReturning is called when a method throws an exception
     @AfterThrowing(
             value = "execution(* com.in28minutes.spring.aop.springaop.business.*.*(..))", throwing = "exception"
     )
@@ -30,6 +32,7 @@ public class AfterAopAccessAspect {
         logger.info("{} returned with value {}", joinPoint, exception);
     }
 
+    //After is called in both scenarios (exception or success)
     @After(value = "execution(* com.in28minutes.spring.aop.springaop.business.*.*(..))")
     public void after(JoinPoint joinPoint){
         logger.info("after execution of {}", joinPoint);
